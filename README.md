@@ -37,8 +37,7 @@ Any algorithms or special techniques that will be necessary.
 
 Electronic mockups of what your team will be developing using wireframes. No
 hand-drawn mockups accepted. 
-[mockup1]: DesignImages/1.jpg
-![Page 1][mockup1]
+![Page 1][DesignImages/1.jpg]
 [mockup2]: DesignImages/2.jpg
 ![Page 2][mockup2]
 [mockup3]: DesignImages/3.jpg
