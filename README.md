@@ -27,10 +27,27 @@ What data will your prototype be using and collecting?
 * represents the properties of the song (i.e. dancability, energy, liveness, etc.)
 
 Any algorithms or special techniques that will be necessary.
-* 
+* We'll be using sentiment analysis through Google's API to determine the emotion
+  based on user's response (their audio response). 
+* We will provide user with all universal emotions and their corresponding 
+  calculated percentage of how much of that emotion is present. 
+* We'll use the data we get from user's response and create our algorithm to 
+  present the most relevant songs to user's emotion. Their song selection 
+  will be taken into account (whether they choose to skip the song or not).
 
 Electronic mockups of what your team will be developing using wireframes. No
 hand-drawn mockups accepted. 
+[mockup1]: DesignImages/1.jpg
+![Page 1][mockup1]
+[mockup2]: DesignImages/2.jpg
+![Page 2][mockup2]
+[mockup3]: DesignImages/3.jpg
+![Page 3][mockup3]
+[mockup4]: DesignImages/4.jpg
+![Page 4][mockup4]
+[mockup5]: DesignImages/5.jpg
+![Page 5][mockup5]
+
 
 If your team incorporates hardware into the project, a high-level system
 engineering diagram will be ideal. A high-level system engineering diagram
