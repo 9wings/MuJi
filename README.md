@@ -30,7 +30,7 @@ be held accountable for the featurs you list!**
 **What data will your prototype be using and collecting?**
 * We'll be using the data from the user (their response to "How was your day?") 
 * We'll also be using songs from Spotify API with extra information that 
-* represents the properties of the song (i.e. dancability, energy, liveness, etc.)
+  represents the properties of the song (i.e. dancability, energy, liveness, etc.)
 
 **Any algorithms or special techniques that will be necessary.**
 * We'll be using sentiment analysis through Google's API to determine the emotion
@@ -41,8 +41,7 @@ be held accountable for the featurs you list!**
   present the most relevant songs to user's emotion. Their song selection 
   will be taken into account (whether they choose to skip the song or not).
 
-**Electronic mockups of what your team will be developing using wireframes. No
-hand-drawn mockups accepted.**
+**Electronic Mockups:**
 ![Page 1](DesignImages/1.jpg)
 <br>
 ![Page 2](DesignImages/2.jpg)
@@ -54,10 +53,3 @@ hand-drawn mockups accepted.**
 ![Page 5](DesignImages/5.jpg)
 <br>
 
-
-**If your team incorporates hardware into the project, a high-level system
-engineering diagram will be ideal. A high-level system engineering diagram
-contains all the compoments of the system (e.g., router, sensors, boards, 
-other hardware), how the components connect to other components, and inputs 
-and outputs (including data). Wireframes should still be used for system 
-engineering diagram. Wireframes of front-end web interfaces are still required.**
