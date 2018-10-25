@@ -3,6 +3,12 @@
 **Project Title:**
 * MuJi
 
+**By:**
+* Anna Yuen
+* Naoki Okada
+* Titapa Chaiyakiturajai
+* Manish Aryal
+
 **Problem Statement (i.e., what is the problem?)**
 * Music has great impact on our emotions. It can help uplift us when we are 
   down, or get us motivated when feeling lazy. However, it's a hassle and 
