@@ -38,14 +38,15 @@ Any algorithms or special techniques that will be necessary.
 Electronic mockups of what your team will be developing using wireframes. No
 hand-drawn mockups accepted. 
 ![Page 1](DesignImages/1.jpg)
-[mockup2]: DesignImages/2.jpg
-![Page 2][mockup2]
-[mockup3]: DesignImages/3.jpg
-![Page 3][mockup3]
-[mockup4]: DesignImages/4.jpg
-![Page 4][mockup4]
-[mockup5]: DesignImages/5.jpg
-![Page 5][mockup5]
+<br>
+![Page 2](DesignImages/2.jpg)
+<br>
+![Page 3](DesignImages/3.jpg)
+<br>
+![Page 4](DesignImages/4.jpg)
+<br>
+![Page 5](DesignImages/5.jpg)
+<br>
 
 
 If your team incorporates hardware into the project, a high-level system
