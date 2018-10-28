@@ -53,3 +53,5 @@ be held accountable for the featurs you list!**
 ![Page 5](DesignImages/5.jpg)
 <br>
 
+## Comments by Ming
+* Way cool!  Use of speech recognition is fantastic and bold.  Total yes.
