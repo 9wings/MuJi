@@ -5,7 +5,6 @@ initAudioPlayer();
 function initAudioPlayer() {
 	audio = new Audio();
 	audio.src = "name_of_the_file";
-	audio.loop = true;
 
 	playButton = document.getElementById("playB");
 	playButton.addEventListener("click", play);
