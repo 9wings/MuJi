@@ -15,6 +15,8 @@
 * Webpages
 
 **Challenges and Issues Faced**
+* Bootstap not working. The library isn't connecting to files. 
 
 **Goals for Next Week**
+* Connect detection.html with Spotify API through JavaScript.
 
