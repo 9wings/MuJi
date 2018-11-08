@@ -14,7 +14,7 @@ app.get("/detection",
 });
 
 
-app.get("/senses",
+app.get("/feeling",
 (req,res) => {
   res.sendFile(path.join(__dirname+'/feeling.html'));
 });
