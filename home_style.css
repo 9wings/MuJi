@@ -41,13 +41,13 @@ background-color:#007bff!important
 
 }
 .description h1{
- color:#F97300 ;
+    color:#F97300 ;
 }
 .description p{
- color:#666;
- font-size: 20px;
- width: 50%;
- line-height: 1.5;
+    color:#666;
+    font-size: 20px;
+    width: 50%;
+    line-height: 1.5;
 }
 .description button{
  border:1px  solid #F97300;
