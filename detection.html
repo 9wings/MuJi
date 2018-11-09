@@ -11,11 +11,32 @@
 
 	<div class="start_recording_button">
 		<script type="text/javascript">
+			var audio, play_button;
 
+			function init_audio_player() {
+				audio = new Audio();
+			}
+
+			window.addEventListener("load", init_audio_player)
+
+
+			if (navigator.getUserMedia) {
+				console.log("getUserMedia supported");
+				navigator.getUserMedia(
+					{
+						audio: true;
+					},
+
+					// success callback function
+					function(stream) {
+						audio.src = (window.URL && )
+					}
 
 		</script>
 </body>
 </html>
 
-<!--write code that accepts audio –>
+<!--record the voice for 10 seconds, make response object and print the object in console.log to see elements of the object –>
+
+
 
