@@ -17,7 +17,6 @@
 <body>
     <h1>Recorder.js export example</h1>
 
-<<<<<<< HEAD
     <p>Make sure you are using a recent version of Google Chrome.</p>
     <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting
         feedback!
@@ -26,36 +25,11 @@
     <!-- Draw the action buttons -->
     <button id="start-btn">Start recording</button>
     <button id="stop-btn" disabled>Stop recording</button>
-=======
-	<div class="start_recording_button">
-		<script type="text/javascript">
-			var audio, play_button;
-
-			function init_audio_player() {
-				audio = new Audio();
-			}
-
-			window.addEventListener("load", init_audio_player)
-
-
-			if (navigator.getUserMedia) {
-				console.log("getUserMedia supported");
-				navigator.getUserMedia(
-					{
-						audio: true;
-					},
-
-					// success callback function
-					function(stream) {
-						audio.src = (window.URL && )
-					}
->>>>>>> e05f0821ceb5f56710863d7086dfc694b5d5b476
 
     <!-- List item to store the recording files so they can be played in the browser -->
     <h2>Stored Recordings</h2>
     <ul id="recordingslist"></ul>
-		<!-- Include the recorder.js library from a local copy -->
-    <script src="/recorder.js"></script>
+
     <script>
         // Expose globally your audio_context, the recorder instance and audio_stream
         var audio_context;
@@ -132,15 +106,9 @@
             document.getElementById("start-btn").disabled = false;
             document.getElementById("stop-btn").disabled = true;
 
-<<<<<<< HEAD
             // Use the Recorder Library to export the recorder Audio as a .wav file
             // The callback providen in the stop recording method receives the blob
             if(typeof(callback) == "function"){
-=======
-<!--record the voice for 10 seconds, make response object and print the object in console.log to see elements of the object –>
-
-
->>>>>>> e05f0821ceb5f56710863d7086dfc694b5d5b476
 
                 /**
                  * Export the AudioBLOB using the exportWAV method.
@@ -205,6 +173,7 @@
         };
     </script>
 
-
+    <!-- Include the recorder.js library from a local copy -->
+    <script src="recorder.js"></script>
 </body>
 </html>
