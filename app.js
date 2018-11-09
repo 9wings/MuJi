@@ -10,7 +10,7 @@ const fs = require('fs');
 const client = new speech.SpeechClient();
 
 // The name of the audio file to transcribe
-const fileName = './resources/audio.raw';
+const fileName = './test.raw';
 
 // Reads a local audio file and converts it to base64
 const file = fs.readFileSync(fileName);
@@ -30,22 +30,6 @@ const request = {
     config: config,
 };
 
-app.get('/',
-(req, res) => {
-  res.sendFile(path.join(__dirname+'/homepage.html'));
-});
-
-app.get("/detection",
-(req,res) => {
-  res.sendFile(path.join(__dirname+'/detection.html'));
-});
-
-
-app.get("/feeling",
-(req,res) => {
-  res.sendFile(path.join(__dirname+'/feeling.html'));
-});
-
 // Detects speech in the audio file
 client
     .recognize(request)
@@ -59,5 +43,22 @@ client
     .catch(err => {
     console.error('ERROR:', err);
     });
+
+app.get('/',
+(req, res) => {
+  res.sendFile(path.join(__dirname + '/homepage.html'));
+});
+
+app.get("/detection",
+(req,res) => {
+  res.sendFile(path.join(__dirname + '/detection.html'));
+});
+
+
+app.get("/feeling",
+(req,res) => {
+  res.sendFile(path.join(__dirname + '/feeling.html'));
+});
+
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
