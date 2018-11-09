@@ -1,4 +1,7 @@
-.navbar{ background:#F97300;}
+.navbar-nav{
+	float: none;
+	text-align: center;
+}
 
 .nav-link , .navbar-brand{ color: #f4f4f4; cursor: pointer;}
 
@@ -6,7 +9,15 @@
 
 .nav-link:hover{ background: #f4f4f4; color: #f97300; }
 
-.navbar-collapse{ justify-content: flex-end;}
+.navbar-collapse{ 
+	/*justify-content: flex-end;*/
+	text-align: center;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
 
 .navbar-toggler{  background:#fff !important;}
 
