@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tuftsdev/comp20-f2018-team3#readme",
   "dependencies": {
+    "@google-cloud/speech": "^2.1.1",
     "bootstrap": "^3.3.7",
     "express": "^4.16.4",
     "path": "^0.12.7"

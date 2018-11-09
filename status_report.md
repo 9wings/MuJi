@@ -16,6 +16,7 @@
 
 **Challenges and Issues Faced**
 * Bootstap not working. The library isn't connecting to files. 
+* Deploying to Heroku. It now works because we had the wrong port number.
 
 **Goals for Next Week**
 * Connect detection.html with Spotify API through JavaScript.
