@@ -13,7 +13,6 @@
 * Heroku setup
 * Routing
 * Webpages: Set up the webpage using navbar from the bootstrap library
-* Webpages
 * Start recording button works
 
 **Challenges and Issues Faced**
