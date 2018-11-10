@@ -12,12 +12,14 @@
 **What's Accomplished This Week**
 * Heroku setup
 * Routing
-* Webpages
+* Webpages: Set up the webpage using navbar from the bootstrap library
 
 **Challenges and Issues Faced**
 * Bootstap not working. The library isn't connecting to files. 
+*	We got it to work afterward fixing some syntax errors with bootstrap library links
 * Deploying to Heroku. It now works because we had the wrong port number.
 
 **Goals for Next Week**
 * Connect detection.html with Spotify API through JavaScript.
+* Complete all the basic designs for webpages
 
