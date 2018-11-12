@@ -23,9 +23,17 @@ app.get("/feeling",
 
 app.post("/audiofile",
 (req, res) => {
-  console.log("Hello!");
+  /*
+  req.body will contain the audio file url
+  we'll use that to get the wav file
+  after that we will use that file to get the emotion detected from the google's api
+  we send the emotion back to the user:
+    a. either create a playlist in the backend and send the playlist to frontend
+    b. or, sennd the emotion signal and create the playlist in the frontend
+  */
   var audiofile = req.body;
-  res.send(req.body);
+  
+
 
 });
 
