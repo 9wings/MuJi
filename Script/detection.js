@@ -25,9 +25,8 @@ $(document).ready( () => {    var audio_context;
             contentType: false
         }).done(
           ( data ) => {
-              console.log(AudioBLOB);
-              console.log( "Server Response: " );
-              console.log( data);
+
+              //process data here!
           });
 
 
