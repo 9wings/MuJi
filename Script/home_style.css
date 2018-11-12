@@ -3,7 +3,7 @@
 	text-align: center;
 }
 
-.nav-link , .navbar-brand{ 
+.nav-link, .navbar-brand{ 
 	color: #000000; 
 	cursor: pointer;
 }
@@ -19,7 +19,7 @@
 
 .navbar-collapse{ 
 	justify-content: flex-end;
-	text-align: center;
+	text-align: left;
 }
 
 .navbar .navbar-nav {
@@ -30,7 +30,14 @@
 .nav.navbar-nav li a{
     color: black;
 	padding-left: 50px;
-	padding-right: 50px;
+	padding-right: 120px;
+}
+
+.nav.navbar-nav p{
+    color: black;
+    padding-top: 15px;
+	padding-left: 100px;
+	padding-right: 250px;
 }
 
 .navbar-toggler{  
@@ -44,7 +51,6 @@
 	background-color:#007bff!important
 }
 
-/*header style*/
 .header{
 	background-image: url('https://upload.wikimedia.org/wikipedia/en/f/f3/Keyboard_21.jpg');
 	background-attachment: fixed;
