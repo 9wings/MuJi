@@ -27,3 +27,6 @@
 * Complete all the basic designs for webpages
 * Get stop button working.
 * Create file to keep user audio
+
+# Comments by Ming
+* Top priority is working with Spotify API
