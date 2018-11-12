@@ -17,16 +17,17 @@ $(document).ready( () => {    var audio_context;
         //var AudioFormat = "audio/mpeg";
 
         stopRecording( (AudioBLOB)=>{
-
-          $.post( "http://localhost:5000/audiofile", { "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "geometry": { "type": "Point", "coordinates": [102.0, 0.5] },
-              "properties": { "prop0": "value0" }
-            }]
-          }).done(function( data ) {
-              console.log( "Server Response: " )
-              console.log( data );
+          $.ajax({
+            type: 'POST',
+            url: "http://localhost:5000/audiofile",
+            data: AudioBLOB,
+            processData: false,
+            contentType: false
+        }).done(
+          ( data ) => {
+              console.log(AudioBLOB);
+              console.log( "Server Response: " );
+              console.log( data);
           });
 
 
