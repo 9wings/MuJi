@@ -42,8 +42,8 @@ app.get("/spot",
 (req,res) => {
   var spotifyApi = new SpotifyWebApi({
     clientId: 'dbf8b5e4053b4e6dac2ebbead378ee3d',
-    clientSecret: '97ee8cd484c74d9aa7ecf520eaca71cf'
-    redirectUri: ''
+    clientSecret: '97ee8cd484c74d9aa7ecf520eaca71cf',
+    redirectUri: 'localhost:5000/about'
   });
 
   spotifyApi.createPlaylist('My Cool Playlist', { 'public' : false })
