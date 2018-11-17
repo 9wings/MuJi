@@ -15,6 +15,7 @@
 * Downloaded and edited starter code for DeepAffects(emotion detection API)
 
 **Challenges and Issues Faced**
+* Get the links of the nav bar to work
 * Connecting to Spotify API
 * Understanding how to use the DeepAffects
 
