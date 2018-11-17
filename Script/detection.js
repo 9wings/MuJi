@@ -55,6 +55,29 @@ $(document).ready( () => {    var audio_context;
             li.appendChild(hf);
             recordingslist.appendChild(li);}, _AudioFormat);
     }, false);
+
+    var DeepAffects = require('deep-affects');
+
+    var defaultClient = DeepAffects.ApiClient.instance;
+
+    // Configure API key authorization: UserSecurity
+    var UserSecurity = defaultClient.authentications['UserSecurity'];
+    UserSecurity.apiKey = "5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28";
+
+    var api = new DeepAffects.DenoiseApi();
+
+    var body = DeepAffects.AudioBLOB.fromFile("/Desktop/comp20-f2018-team3"); // {Audio} Audio object that needs to be denoised.
+
+    webhook = url;
+    var callback = function(error, data, response) {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('API called successfully. Returned data: ' + data);
+      }
+    };
+    api.syncDenoiseAudio(body, callback);
+    api.asyncDenoiseAudio(body, webhook, callback);
 });
 
 
