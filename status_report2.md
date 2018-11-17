@@ -12,10 +12,12 @@
 **What's Accomplished This Week**
 * Connected front-end to back-end
 * Styled and tidied up the pages
+* Downloaded and edited starter code for DeepAffects(emotion detection API)
 
 **Challenges and Issues Faced**
 * Connecting to Spotify API
+* Understanding how to use the DeepAffects
 
 **Goals for Next Week**
 * Connecting to Spotify API
-* Detecting emotion using 
+* Detecting emotion using DeepAffects
