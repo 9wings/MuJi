@@ -12,6 +12,15 @@ app.use(express.static(__dirname + '/Script'))
    .use(cors())
    .use(cookieParser());
 
+   var clientId = 'dbf8b5e4053b4e6dac2ebbead378ee3d',
+   clientSecret = '97ee8cd484c74d9aa7ecf520eaca71cf';
+  
+   // Create the api object with the credentials
+   var spotifyApi = new SpotifyWebApi({
+     clientId: clientId,
+     clientSecret: clientSecret
+   });
+
 app.get('/',
 (req, res) => {
   res.sendFile('/View/homepage.html', { root: __dirname });
@@ -60,6 +69,7 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
+/*
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -165,26 +175,49 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
+*/
 
-
-app.get("/spot",
+app.get("/getSong",
 (req,res) => {
-  var spotifyApi = new SpotifyWebApi({
-    clientId: 'dbf8b5e4053b4e6dac2ebbead378ee3d',
-    clientSecret: '97ee8cd484c74d9aa7ecf520eaca71cf',
-    redirectUri: 'http://localhost:5000/callback'
-  });
-
-  spotifyApi.createPlaylist('My Cool Playlist', { 'public' : false })
+  spotifyApi.searchTracks('Love')
   .then(function(data) {
-    console.log('Created playlist!');
+    res.send(data.body);
   }, function(err) {
-    console.log('Something went wrong!', err);
+    res.send(err);
   });
-
-  res.send([]);
 });
 
+app.get("/callback",
+(req,res) => {
+  res.sendFile('/View/detection.html', { root: __dirname });
+});
+
+app.get("/authenticate",
+(req,res) => {
+  // Retrieve an access token.
+  spotifyApi.clientCredentialsGrant().then(
+    function(data) {
+      console.log('The access token expires in ' + data.body['expires_in']);
+      console.log('The access token is ' + data.body['access_token']);
+      res.send("App authenticated");
+  
+      // Save the access token so that it's used in future calls
+      spotifyApi.setAccessToken(data.body['access_token']);
+    },
+    function(err) {
+      console.log('Something went wrong when retrieving an access token', err);
+    }
+  );
+/*
+  spotifyApi.searchTracks('Love')
+  .then(function(data) {
+    console.log('Search by "Love"', data.body);
+  }, function(err) {
+    console.error(err);
+  });
+  */
+
+});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

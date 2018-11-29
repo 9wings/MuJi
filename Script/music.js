@@ -20,3 +20,7 @@ function initAudioPlayer() {
 		audio.pause();
 	}
 }
+
+function getSong() {
+	
+}
