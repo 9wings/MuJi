@@ -177,16 +177,6 @@ app.get('/refresh_token', function(req, res) {
 });
 */
 
-app.get("/getSong",
-(req,res) => {
-  spotifyApi.searchTracks('Love')
-  .then(function(data) {
-    res.send(data.body);
-  }, function(err) {
-    res.send(err);
-  });
-});
-
 app.get("/callback",
 (req,res) => {
   res.sendFile('/View/detection.html', { root: __dirname });
@@ -208,15 +198,16 @@ app.get("/authenticate",
       console.log('Something went wrong when retrieving an access token', err);
     }
   );
-/*
-  spotifyApi.searchTracks('Love')
-  .then(function(data) {
-    console.log('Search by "Love"', data.body);
-  }, function(err) {
-    console.error(err);
-  });
-  */
+});
 
+app.get("/getSong",
+(req,res) => {
+  spotifyApi.searchTracks('track:Firestone')
+  .then(function(data) {
+    res.send(data.body);
+  }, function(err) {
+    res.send(err);
+  });
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
