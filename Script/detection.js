@@ -41,7 +41,7 @@ $(document).ready( () => {    var audio_context;
             var li = document.createElement('li');
             var au = document.createElement('audio');
             var hf = document.createElement('a');
-
+ 
             var reader = new FileReader();
             reader.readAsDataURL(AudioBLOB); 
             reader.onloadend = function() {
@@ -49,7 +49,7 @@ $(document).ready( () => {    var audio_context;
                alert(base64data);
                 
                 var obj = {"content": base64data, "sampleRate": 8000, "encoding": "WAV", "languageCode": "en-US"}
-                //console.log(obj);
+                console.log(obj);
                //var xhr = new XMLHttpRequest();
                $.post( "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", obj
                     //$( ".result" ).html( data );
@@ -73,7 +73,7 @@ $(document).ready( () => {    var audio_context;
             // Change the format of the file according to the mimetype
             // e.g for audio/wav the extension is .wav
             //     for audio/mpeg (mp3) the extension is .mp3
-            hf.download = new Date().toISOString() + '.wav';
+            hf.download = new Date().toISOString() + '.m4a';
             hf.innerHTML = hf.download;
             li.appendChild(au);
             li.appendChild(hf);
