@@ -96,7 +96,7 @@
             // Stop the recorder instance
             recorder && recorder.stop();
             console.log('Stopped recording.');
-
+            console.log("leave");
             // Stop the getUserMedia Audio Stream !
             audio_stream.getAudioTracks()[0].stop();
 
@@ -150,6 +150,16 @@
                     // In this case we are going to add an Audio item to the list so you
                     // can play every stored Audio
                     var url = URL.createObjectURL(AudioBLOB);
+                    //call function to turn audioBlob to base64 byteAudioString
+                    //send to server
+                    console.log(AudioBLOB);
+
+                     var reader = new FileReader();
+                     reader.readAsDataURL(AudioBLOB); 
+                     reader.onloadend = function() {
+                         base64data = reader.result;
+                         console.log(base64data);
+                     }
                     var li = document.createElement('li');
                     var au = document.createElement('audio');
                     var hf = document.createElement('a');
@@ -172,6 +182,6 @@
     </script>
 
     <!-- Include the recorder.js library from a local copy -->
-    <script src="recorder.js"></script>
+    <script src="/Script/recorder.js"></script>
 </body>
 </html>

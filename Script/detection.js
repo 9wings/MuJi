@@ -37,9 +37,34 @@ $(document).ready( () => {    var audio_context;
             // In this case we are going to add an Audio item to the list so you
             // can play every stored Audio
             var url = URL.createObjectURL(AudioBLOB);
+            //console.log(AudioBLOB);
             var li = document.createElement('li');
             var au = document.createElement('audio');
             var hf = document.createElement('a');
+
+            var reader = new FileReader();
+            reader.readAsDataURL(AudioBLOB); 
+            reader.onloadend = function() {
+               var base64data = reader.result;
+               alert(base64data);
+                
+                var obj = {"content": base64data, "sampleRate": 8000, "encoding": "WAV", "languageCode": "en-US"}
+                //console.log(obj);
+               //var xhr = new XMLHttpRequest();
+               $.post( "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", obj
+                    //$( ".result" ).html( data );
+                ).done(function(data){
+                    console.log("hi");
+                    console.log(data);
+                });
+
+               // xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion", true);
+               // xhr.setRequestHeader('content-type', 'application/json');
+               
+               // console.log(obj);
+               // xhr.send(obj);
+
+            }
 
             au.controls = true;
             au.src = url;
@@ -87,6 +112,11 @@ function Initialize() {
  */
 function startRecording() {
     // Access the Microphone using the navigator.getUserMedia method to obtain a stream
+    navigator.getUserMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
     navigator.getUserMedia({ audio: true }, function (stream) {
         // Expose the stream to be accessible globally
         audio_stream = stream;

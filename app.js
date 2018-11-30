@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/Script'))
    var spotifyApi = new SpotifyWebApi({
      clientId: clientId,
      clientSecret: clientSecret
-   });
+   }); 
 
 app.get('/',
 (req, res) => {
