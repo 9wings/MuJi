@@ -87,3 +87,12 @@
 	background:#F97300;
 	color:#fff;
 }
+
+.header{
+	background-image: 'backgroundImage.jpg';
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+
+
