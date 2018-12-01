@@ -36,6 +36,10 @@ app.get("/detection",
   res.sendFile('/View/detection.html', { root: __dirname });
 });
 
+app.post("/anna", (req,res) => {
+  res.send("PP");
+});
+
 app.post("/audiofile",
 (req, res) => {
   /*
