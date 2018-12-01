@@ -60,6 +60,8 @@ app.get('/login', (req, res) => {
 });
 
 app.post("/catchEmotion", (req, res) => {
+  emotion = req.body;
+  console.log(emotion);
   var emotion = req.body;
 
   var to_insert = {
