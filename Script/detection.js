@@ -35,14 +35,7 @@ $(document).ready( () => {    var audio_context;
 
                    xhr.onreadystatechange = function() {
                         if(xhr.readyState == 4 && xhr.status == 200) {
-                          var data_recieved = JSON.parse(xhr.responseText);
-                          var to_send = [];
-                          data_recieved.forEach((data) => {
-                            to_send.push(data);
-                          });
-                          console.log(to_send);
-                          $.post("http://localhost:5000/catchEmotion", data_recieved);
-
+                          $.post("http://localhost:5000/catchEmotion", xhr.responseText);
                          }
                     }
                    xhr.send(JSON.stringify(obj));
