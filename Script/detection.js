@@ -35,6 +35,7 @@ $(document).ready( () => {    var audio_context;
 
                    xhr.onreadystatechange = function() {
                         if(xhr.readyState == 4 && xhr.status == 200) {
+                            //console.log(xhr.responseText);
                           $.post("http://localhost:5000/catchEmotion", xhr.responseText);
                          }
                     }
