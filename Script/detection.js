@@ -46,23 +46,52 @@ $(document).ready( () => {    var audio_context;
             reader.readAsDataURL(AudioBLOB); 
             reader.onloadend = function() {
                var base64data = reader.result;
-               alert(base64data);
-                
-                var obj = {"content": base64data, "sampleRate": 8000, "encoding": "WAV", "languageCode": "en-US"}
-                //console.log(obj);
-               //var xhr = new XMLHttpRequest();
-               $.post( "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", obj
-                    //$( ".result" ).html( data );
-                ).done(function(data){
-                    console.log("hi");
-                    console.log(data);
-                });
+               base64data = base64data.split(",")[1];
+               // alert(base64data);
 
-               // xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion", true);
-               // xhr.setRequestHeader('content-type', 'application/json');
+                var obj = {"content": "bytesEncodedAudioString", "sampleRate": 8000, "encoding": "wav", "languageCode": "en-US"}
+                
+
+
+
+                //console.log(obj);
+
+                // $.post({
+                //      url: "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28n",
+                //      data: obj,
+                //      type: "POST",
+                //      beforeSend: function(xhr){xhr.setRequestHeader('content-type', 'application/json');},
+                //      success: function(data) { console.log("data"); }
+                //   });
+
+                /*
+                curl -X POST "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28" -H 'content-type: application/json' -d @data.json
+
+                */
+               var xhr = new XMLHttpRequest();
+               // $.post( "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", obj
+               //      //$( ".result" ).html( data );
+               //  ).done(function(data){
+               //      console.log("hi");
+               //      console.log(data);
+               //  });
+
+
+               xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", true);
+               xhr.setRequestHeader('content-type', 'application/json');
                
-               // console.log(obj);
-               // xhr.send(obj);
+               xhr.onreadystatechange = function() {//Call a function when the state changes.
+                    //if(xhr.readyState == 4 && xhr.status == 200) {
+                        console.log(xhr.responseText);
+                    // }
+                    // else{
+                    //     console.log("error");
+                    // }
+                }
+
+                alert(obj.content);
+               xhr.send(obj);
+               //alert(xhr.responseText);
 
             }
 
