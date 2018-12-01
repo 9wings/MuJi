@@ -10,117 +10,55 @@ $(document).ready( () => {    var audio_context;
         startRecording();
     }, false);
 
+
     // Handle on stop recording button
     document.getElementById("stop-btn").addEventListener("click", function(){
-        var _AudioFormat = "audio/wav";
-        // You can use mp3 to using the correct mimetype
-        //var AudioFormat = "audio/mpeg";
+            var _AudioFormat = "audio/wav";
+            stopRecording(function(AudioBLOB){
+                var url = URL.createObjectURL(AudioBLOB);
+                //console.log(AudioBLOB);
+                var li = document.createElement('li');
+                var au = document.createElement('audio');
+                var hf = document.createElement('a');
 
-        stopRecording( (AudioBLOB)=>{
-          $.ajax({
-            type: 'POST',
-            url: "http://localhost:5000/audiofile",
-            data: AudioBLOB,
-            processData: false,
-            contentType: false
-        }).done(
-          ( data ) => {
+                var reader = new FileReader();
+                reader.readAsDataURL(AudioBLOB);
+                reader.onloadend = function() {
+                   var base64data = reader.result;
+                   base64data = base64data.split(",")[1];
+                   var xhr = new XMLHttpRequest();
 
-              //process data here!
-          });
+                   xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=AqeLJ72S0Nw0xcWuWse2O47q1Q76CFYL", true);
+                   xhr.setRequestHeader('content-type', 'application/json');
 
+                    var obj = {"content": base64data, "sampleRate": 8000, "encoding": "wav", "languageCode": "en-US"}
 
-            // Note:
-            // Use the AudioBLOB for whatever you need, to download
-            // directly in the browser, to upload to the server, you name it !
+                   xhr.onreadystatechange = function() {
+                        if(xhr.readyState == 4 && xhr.status == 200) {
+                          var data_recieved = JSON.parse(xhr.responseText);
+                          var to_send = [];
+                          data_recieved.forEach((data) => {
+                            to_send.push(data);
+                          });
+                          console.log(to_send);
+                          $.post("http://localhost:5000/catchEmotion", data_recieved);
 
-            // In this case we are going to add an Audio item to the list so you
-            // can play every stored Audio
-            var url = URL.createObjectURL(AudioBLOB);
-            //console.log(AudioBLOB);
-            var li = document.createElement('li');
-            var au = document.createElement('audio');
-            var hf = document.createElement('a');
- 
-            var reader = new FileReader();
-            reader.readAsDataURL(AudioBLOB); 
-            reader.onloadend = function() {
-               var base64data = reader.result;
-               base64data = base64data.split(",")[1];
-               // alert(base64data);
-
-                var obj = {"content": "bytesEncodedAudioString", "sampleRate": 8000, "encoding": "wav", "languageCode": "en-US"}
-                
-
-
-
-                //console.log(obj);
-
-                // $.post({
-                //      url: "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28n",
-                //      data: obj,
-                //      type: "POST",
-                //      beforeSend: function(xhr){xhr.setRequestHeader('content-type', 'application/json');},
-                //      success: function(data) { console.log("data"); }
-                //   });
-
-                /*
-                curl -X POST "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28" -H 'content-type: application/json' -d @data.json
-
-                */
-               var xhr = new XMLHttpRequest();
-               // $.post( "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", obj
-               //      //$( ".result" ).html( data );
-               //  ).done(function(data){
-               //      console.log("hi");
-               //      console.log(data);
-               //  });
-
-
-               xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", true);
-               xhr.setRequestHeader('content-type', 'application/json');
-
-                var obj = {"content": base64data, "sampleRate": 8000, "encoding": "WAV", "languageCode": "en-US"}
-                console.log(obj);
-               //var xhr = new XMLHttpRequest();
-               $.post( "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=5X5lEg0RWvfQp1xA7xW47QjVgYXEUl28", obj
-                    //$( ".result" ).html( data );
-                ).done(function(data){
-                    console.log("hi");
-                    console.log(data);
-                });
-
-               // xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion", true);
-               // xhr.setRequestHeader('content-type', 'application/json');
-               
-               xhr.onreadystatechange = function() {//Call a function when the state changes.
-                    //if(xhr.readyState == 4 && xhr.status == 200) {
-                        console.log(xhr.responseText);
-                    // }
-                    // else{
-                    //     console.log("error");
-                    // }
-                }
-
-                alert(obj.content);
-               xhr.send(obj);
-               //alert(xhr.responseText);
+                         }
+                    }
+                   xhr.send(JSON.stringify(obj));
 
             }
-
-            au.controls = true;
-            au.src = url;
-            hf.href = url;
-            // Important:
-            // Change the format of the file according to the mimetype
-            // e.g for audio/wav the extension is .wav
-            //     for audio/mpeg (mp3) the extension is .mp3
-            hf.download = new Date().toISOString() + '.m4a';
-            hf.innerHTML = hf.download;
-            li.appendChild(au);
-            li.appendChild(hf);
-            recordingslist.appendChild(li);}, _AudioFormat);
+                au.controls = true;
+                au.src = url;
+                hf.href = url;
+                hf.download = new Date().toISOString() + '.m4a';
+                hf.innerHTML = hf.download;
+                li.appendChild(au);
+                li.appendChild(hf);
+                recordingslist.appendChild(li);} , _AudioFormat);
     }, false);
+
+
 });
 
 

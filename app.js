@@ -31,7 +31,7 @@ app.get("/detection",
   res.sendFile('/View/detection.html', { root: __dirname });
 });
 
-app.get('/login', function(req, res) {
+app.get('/login', (req, res) => {
   var credentials = {
   clientId: client_id,
   clientSecret: client_secret,
@@ -46,13 +46,17 @@ app.get('/login', function(req, res) {
 
       spotifyApi.searchTracks('Love')
         .then(function(data) {
-          console.log('Search by "Love"', data.body);
           res.send(data.body.tracks.items[0]);
         }, function(err) {
           console.error(err);
         });
     },
     (err) => {console.log('Something went wrong when retrieving an access token', err.message); });
+});
+
+app.post("/catchEmotion", (req, res) => {
+  console.log(req.body);
+  res.send("Recieved");
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

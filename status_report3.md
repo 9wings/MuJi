@@ -25,5 +25,5 @@
 
 **Goals for Next Week**
 * Finish up DeepAffects Emotions API.
-* Finish up Spotify API
-* Clean up the frontend UI
+* Finish up Spotify API.
+* Clean up the frontend UI.
