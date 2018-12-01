@@ -7,7 +7,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var spotifyWebAPI = require('spotify-web-api-node');
-
+ 
 var client_id = "f4197e7c7e16424796aeddab09673434";
 var client_secret = "f7d26f4a74f44a439b571086aabf2934";
 
@@ -60,7 +60,14 @@ app.get('/login', (req, res) => {
 });
 
 app.post("/catchEmotion", (req, res) => {
-  emotion = req.body;
+  var emotion = req.body;
+
+  var to_insert = {
+    "emotion": req.body.segments.emotion
+  }
+  console.log(to_insert.emotion);
+
+  // res.set('Content-type', 'application/json');
   /*
   the emotion is an array; extract information from it and
   use some kind of algorithm to set the variable "final_emotion" to the emotion => joy, surprise, disgust, sadness, anger
