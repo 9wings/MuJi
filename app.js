@@ -46,13 +46,18 @@ app.get("/detection",
   res.sendFile('public/views/detection.html', { root: __dirname });
 });
 
+app.get("/music",
+(req,res) => {
+  res.sendFile('public/views/music.html', { root: __dirname });
+});
+
 app.get('/search', (req, res) => {
   spotifyApi.clientCredentialsGrant().then(
     (data) => {
       console.log(data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
 
-      spotifyApi.searchTracks(final_emotion)
+      spotifyApi.searchTracks('valence:0.624')
         .then(function(data) {
           res.send(data.body.tracks.items[0]);
         }, function(err) {

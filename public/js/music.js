@@ -1,6 +1,7 @@
 var audio, playButton, pauseButton;
 
 initAudioPlayer();
+retrieveSong();
 
 function initAudioPlayer() {
 	audio = new Audio();
@@ -21,6 +22,20 @@ function initAudioPlayer() {
 	}
 }
 
-function getSong() {
-	
+function retrieveSong() {
+    
+    request = new XMLHttpRequest();
+    request.open("GET", "https://api.spotify.com/v1/search?q=tania%20bowra&type=artist", true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            console.log(request.responseText);			
+        } else if (request.readyState == 4 && request.status != 200) {
+            console.log("Woops, something went wrong...");
+        }
+        else if (request.readyState == 3) {
+            console.log("Come back soon!");
+        }		
+    };
 }
