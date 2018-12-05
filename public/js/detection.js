@@ -1,4 +1,5 @@
-$(document).ready( () => {    var audio_context;
+$(document).ready( () => {    
+    var audio_context;
     var recorder;
     var audio_stream;
 
@@ -36,6 +37,12 @@ $(document).ready( () => {    var audio_context;
                    xhr.onreadystatechange = function() {
                         if(xhr.readyState == 4 && xhr.status == 200) {
                             //console.log(xhr.responseText);
+                             //window.onload = function() {
+                                var obj = JSON.parse(xhr.responseText);
+                                alert(obj[0].emotion);
+                                document.getElementById('Detecting').innerHTML = obj[0].emotion;
+                            //}
+                                // document.write("<h1>Hello member</h1>");
                           $.post("http://localhost:5000/catchEmotion", xhr.responseText);
                          }
                     }
