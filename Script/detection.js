@@ -10,50 +10,49 @@ $(document).ready( () => {    var audio_context;
         startRecording();
     }, false);
 
+
     // Handle on stop recording button
     document.getElementById("stop-btn").addEventListener("click", function(){
-        var _AudioFormat = "audio/wav";
-        // You can use mp3 to using the correct mimetype
-        //var AudioFormat = "audio/mpeg";
+            var _AudioFormat = "audio/wav";
+            stopRecording(function(AudioBLOB){
+                var url = URL.createObjectURL(AudioBLOB);
+                //console.log(AudioBLOB);
+                var li = document.createElement('li');
+                var au = document.createElement('audio');
+                var hf = document.createElement('a');
 
-        stopRecording( (AudioBLOB)=>{
-          $.ajax({
-            type: 'POST',
-            url: "http://localhost:5000/audiofile",
-            data: AudioBLOB,
-            processData: false,
-            contentType: false
-        }).done(
-          ( data ) => {
+                var reader = new FileReader();
+                reader.readAsDataURL(AudioBLOB);
+                reader.onloadend = function() {
+                   var base64data = reader.result;
+                   base64data = base64data.split(",")[1];
+                   var xhr = new XMLHttpRequest();
 
-              //process data here!
-          });
+                   xhr.open('POST', "https://proxy.api.deepaffects.com/audio/generic/api/v2/sync/recognise_emotion?apikey=AqeLJ72S0Nw0xcWuWse2O47q1Q76CFYL", true);
+                   xhr.setRequestHeader('content-type', 'application/json');
 
+                    var obj = {"content": base64data, "sampleRate": 8000, "encoding": "wav", "languageCode": "en-US"}
 
-            // Note:
-            // Use the AudioBLOB for whatever you need, to download
-            // directly in the browser, to upload to the server, you name it !
+                   xhr.onreadystatechange = function() {
+                        if(xhr.readyState == 4 && xhr.status == 200) {
+                            //console.log(xhr.responseText);
+                          $.post("http://localhost:5000/catchEmotion", xhr.responseText);
+                         }
+                    }
+                   xhr.send(JSON.stringify(obj));
 
-            // In this case we are going to add an Audio item to the list so you
-            // can play every stored Audio
-            var url = URL.createObjectURL(AudioBLOB);
-            var li = document.createElement('li');
-            var au = document.createElement('audio');
-            var hf = document.createElement('a');
-
-            au.controls = true;
-            au.src = url;
-            hf.href = url;
-            // Important:
-            // Change the format of the file according to the mimetype
-            // e.g for audio/wav the extension is .wav
-            //     for audio/mpeg (mp3) the extension is .mp3
-            hf.download = new Date().toISOString() + '.wav';
-            hf.innerHTML = hf.download;
-            li.appendChild(au);
-            li.appendChild(hf);
-            recordingslist.appendChild(li);}, _AudioFormat);
+            }
+                au.controls = true;
+                au.src = url;
+                hf.href = url;
+                hf.download = new Date().toISOString() + '.m4a';
+                hf.innerHTML = hf.download;
+                li.appendChild(au);
+                li.appendChild(hf);
+                recordingslist.appendChild(li);} , _AudioFormat);
     }, false);
+
+
 });
 
 
@@ -87,6 +86,11 @@ function Initialize() {
  */
 function startRecording() {
     // Access the Microphone using the navigator.getUserMedia method to obtain a stream
+    navigator.getUserMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
     navigator.getUserMedia({ audio: true }, function (stream) {
         // Expose the stream to be accessible globally
         audio_stream = stream;
