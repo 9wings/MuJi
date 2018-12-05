@@ -17,23 +17,23 @@ var final_emotion = "";
 
 const PORT = process.env.PORT || 5000
 
-app.use(express.static(__dirname + '/Script'))
+app.use('/static', express.static(path.join(__dirname, 'public')))
    .use(cors())
    .use(cookieParser());
 
 app.get('/',
 (req, res) => {
-  res.sendFile('/View/homepage.html', { root: __dirname });
+  res.sendFile('public/views/homepage.html', { root: __dirname });
 });
 
 app.get("/about",
 (req,res) => {
-  res.sendFile('/View/about.html', { root: __dirname });
+  res.sendFile('public/views/about.html', { root: __dirname });
 });
 
 app.get("/detection",
 (req,res) => {
-  res.sendFile('/View/detection.html', { root: __dirname });
+  res.sendFile('public/views/detection.html', { root: __dirname });
 });
 
 app.get('/login', (req, res) => {
