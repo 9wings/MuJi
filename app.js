@@ -7,13 +7,15 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var spotifyWebAPI = require('spotify-web-api-node');
- 
+
+var credentials;
+var spotifyApi;
 var client_id = "f4197e7c7e16424796aeddab09673434";
 var client_secret = "f7d26f4a74f44a439b571086aabf2934";
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-var final_emotion = "";
+var final_emotion = "Love";
 
 const PORT = process.env.PORT || 5000
 
@@ -23,6 +25,13 @@ app.use(express.static(__dirname + '/Script'))
 
 app.get('/',
 (req, res) => {
+  credentials = {
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUri: 'http://localhost.com:5000/'
+    };
+  
+  spotifyApi = new spotifyWebAPI(credentials);
   res.sendFile('/View/homepage.html', { root: __dirname });
 });
 
@@ -36,17 +45,10 @@ app.get("/detection",
   res.sendFile('/View/detection.html', { root: __dirname });
 });
 
-app.get('/login', (req, res) => {
-  var credentials = {
-  clientId: client_id,
-  clientSecret: client_secret,
-  redirectUri: 'http://localhost.com:5000/homepage/'
-  };
-
-  var spotifyApi = new spotifyWebAPI(credentials);
+app.get('/search', (req, res) => {
   spotifyApi.clientCredentialsGrant().then(
     (data) => {
-      console.log(data.body['access token']);
+      console.log(data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
 
       spotifyApi.searchTracks(final_emotion)
