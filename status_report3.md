@@ -27,3 +27,8 @@
 * Finish up DeepAffects Emotions API.
 * Finish up Spotify API.
 * Clean up the frontend UI.
+
+# Comments by Ming
+* Are you uploading data with multipart/form-data HTTP request header set? https://stackoverflow.com/questions/8659808/how-does-http-file-upload-work
+* DeepAffects should take priority
+* Good use of base64
