@@ -57,7 +57,7 @@ app.get('/search', (req, res) => {
       console.log(data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
 
-      spotifyApi.searchTracks('valence:0.624')
+      spotifyApi.searchTracks('Love')
         .then(function(data) {
           res.send(data.body.tracks.items[0]);
         }, function(err) {
