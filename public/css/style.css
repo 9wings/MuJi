@@ -33,6 +33,15 @@
 	padding-right: 60px;
 }
 
+.nav.navbar-nav li a:hover {
+    background-color: #555;
+    color: white;
+
+	padding-left: 20px;
+
+	padding-right: 20px;
+}
+
 .nav.navbar-nav p{
     color: white;
     padding-top: 15px;
@@ -125,4 +134,6 @@ div {
 div {
 	text-align: center;
 }
+
+
 
