@@ -1,7 +1,7 @@
 .navbar-nav{
 	float: none;
 	text-align: center;
-} 
+}  
 
 .nav-link, .navbar-brand{ 
 	color: #000000; 
@@ -113,7 +113,7 @@ body {
 } 
 
 h2 {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 hr {
@@ -135,5 +135,18 @@ div {
 	text-align: center;
 }
 
+body {
+	height:100%;
+   	width:100%;
+   	background-image: url(/static/images/background.jpg);/*your background image*/  
+   	background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
+   	background-size: cover;/*this sets the image to fullscreen covering the whole screen*/  
+   	/*css hack for ie*/     
+   	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
+   	-ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
+}
 
+h4 {
+	color: 	#F0F8FF;
+}
 
