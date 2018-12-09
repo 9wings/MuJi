@@ -9,7 +9,7 @@ $(document).ready( () => {    var audio_context;
     document.getElementById("start-btn").addEventListener("click", function(){
         startRecording();
     }, false);
-
+ 
 
     // Handle on stop recording button
     document.getElementById("stop-btn").addEventListener("click", function(){
@@ -35,6 +35,10 @@ $(document).ready( () => {    var audio_context;
 
                    xhr.onreadystatechange = function() {
                         if(xhr.readyState == 4 && xhr.status == 200) {
+                            var obj = JSON.parse(xhr.responseText);
+                            console.log(obj);
+                            document.getElementById('detect').innerHTML = obj[0].emotion;
+                            
                             //console.log(xhr.responseText);
                           $.post("http://localhost:5000/catchEmotion", xhr.responseText);
                          }

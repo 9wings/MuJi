@@ -146,8 +146,3 @@ body {
    	-ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
 }
 
-.container {
-	size: 30px;
-	color: 	#F0F8FF;
-}
-
