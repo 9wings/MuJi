@@ -77,12 +77,6 @@ app.post("/catchEmotion", (req, res) => {
   }
   console.log(to_insert.emotion);
 
-  // res.set('Content-type', 'application/json');
-  /*
-  the emotion is an array; extract information from it and
-  use some kind of algorithm to set the variable "final_emotion" to the emotion => joy, surprise, disgust, sadness, anger
-
-  */
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

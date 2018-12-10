@@ -7,6 +7,7 @@ $(document).ready( () => {    var audio_context;
 
     // Handle on start recording button
     document.getElementById("start-btn").addEventListener("click", function(){
+        console.log("Started recording");
         startRecording();
     }, false);
  
