@@ -1,4 +1,5 @@
-$(document).ready( () => {    var audio_context;
+$(document).ready( () => {    
+    var audio_context;
     var recorder;
     var audio_stream;
 
@@ -10,18 +11,13 @@ $(document).ready( () => {    var audio_context;
         console.log("Started recording");
         startRecording();
     }, false);
- 
+    
 
     // Handle on stop recording button
     document.getElementById("stop-btn").addEventListener("click", function(){
             var _AudioFormat = "audio/wav";
             stopRecording(function(AudioBLOB){
                 var url = URL.createObjectURL(AudioBLOB);
-                //console.log(AudioBLOB);
-                var li = document.createElement('li');
-                var au = document.createElement('audio');
-                var hf = document.createElement('a');
-
                 var reader = new FileReader();
                 reader.readAsDataURL(AudioBLOB);
                 reader.onloadend = function() {
@@ -42,19 +38,12 @@ $(document).ready( () => {    var audio_context;
                             
                             //console.log(xhr.responseText);
                           $.post("http://localhost:5000/catchEmotion", xhr.responseText);
+                          document.getElementById("music_page").style="display:inline;";
                          }
                     }
                    xhr.send(JSON.stringify(obj));
 
             }
-                au.controls = true;
-                au.src = url;
-                hf.href = url;
-                hf.download = new Date().toISOString() + '.m4a';
-                hf.innerHTML = hf.download;
-                li.appendChild(au);
-                li.appendChild(hf);
-                recordingslist.appendChild(li);} , _AudioFormat);
     }, false);
 
 
@@ -76,8 +65,6 @@ function Initialize() {
 
         // Store the instance of AudioContext globally
         audio_context = new AudioContext;
-        console.log('Audio context is ready !');
-        console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
     } catch (e) {
         alert('No web audio support in this browser!');
     }
@@ -157,3 +144,4 @@ function stopRecording(callback, AudioFormat) {
         }, (AudioFormat || "audio/wav"));
     }
 }
+});

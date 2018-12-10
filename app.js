@@ -67,16 +67,13 @@ app.get('/search', (req, res) => {
     (err) => {console.log('Something went wrong when retrieving an access token', err.message); });
 });
 
+
+
 app.post("/catchEmotion", (req, res) => {
   emotion = req.body;
   console.log(emotion);
   var emotion = req.body;
-
-  var to_insert = {
-    "emotion": req.body.segments.emotion
-  }
-  console.log(to_insert.emotion);
-
+  
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
