@@ -1,7 +1,6 @@
 var audio, playButton, pauseButton;
 
 initAudioPlayer();
-// retrieveSong();
 
 function initAudioPlayer() {
     audio = new Audio();
