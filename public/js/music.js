@@ -10,13 +10,10 @@ function initAudioPlayer() {
     request.send();
 
     request.onreadystatechange = function() {
-        audio = new Audio();
+        var audio = new Audio();
         if (request.readyState == 4 && request.status == 200) {
             list_data = JSON.parse(request.responseText);
-            console.log(list_data)
-
             list_songs = document.getElementById("list_songs")
-            
             list_data.forEach(data => {
                 var song_name = data.name;
                 var artist_name = data.artists[0].name;
@@ -50,7 +47,6 @@ function initAudioPlayer() {
             });
 
             $(document).on("click", ".song", function(){
-                console.log($(this))
                 document.getElementById("img_url").src = $(this)[0].children[0].currentSrc;
                 document.getElementById("song_name").innerHTML = $(this)[0].children[1].children[0].innerHTML;
                 document.getElementById("artist_name").innerHTML = $(this)[0].children[1].children[1].innerHTML;
