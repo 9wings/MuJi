@@ -11,12 +11,17 @@ $(document).ready( () => {
         //console.log("Started recording");
         startRecording();
         document.getElementById('detect').innerHTML = "DETECTING...";
+        document.getElementById('detect').style.marginTop = "30px"; 
     }, false);
 
     // Handle on stop recording button
     document.getElementById("stop-btn").addEventListener("click", function() {
 
             var _AudioFormat = "audio/wav";
+
+            document.getElementById('start-btn').style.visibility = "hidden";
+            document.getElementById('stop-btn').style.visibility = "hidden";
+
             stopRecording(function(AudioBLOB){
                 var url = URL.createObjectURL(AudioBLOB);
                 var reader = new FileReader();
@@ -34,12 +39,18 @@ $(document).ready( () => {
                    xhr.onreadystatechange = function() {
                         if(xhr.readyState == 4 && xhr.status == 200) {
                             var obj = JSON.parse(xhr.responseText);
-                            console.log(obj);
-                            document.getElementById('detect').innerHTML = obj[0].emotion;
+                            document.getElementById('detect').style.fontSize = "35px";
+                            document.getElementById('detect').innerHTML = "Your voice tells a lot about you <br/>";
+
+                            for (var i = 0; i < obj.length; i++) {
+                                console.log(obj[i]);
+                                document.getElementById('detect').innerHTML += "<div style='display:grid;grid-template-columns: 5fr 2fr;' >"+ obj[i].emotion + "<h3>"+ Math.floor(obj[i].start) + "-"+ Math.ceil(obj[i].end) +" seconds" + " </h3></div>";
+                            }
                             
-                            //console.log(xhr.responseText);
-                          $.post("http://muji.herokuapp.com/catchEmotion", JSON.stringify({'emotions': obj}));
-                          document.getElementById("music_page").style="display:inline;";
+                            
+                            $.post("http://muji.herokuapp.com/catchEmotion", {"emotions": obj});
+                            document.getElementById("music_page").style="display:inline;";
+                            document.getElementById("music_page").style.marginTop = "75px";
                          }
                     }
                    xhr.send(JSON.stringify(obj));
@@ -103,7 +114,7 @@ function startRecording() {
         document.getElementById("start-btn").disabled = true;
         document.getElementById("stop-btn").disabled = false;
     }, function (e) {
-        console.error('No live audio input: ' + e);
+        alert("Allow permissions to access the microphone!");
     });
 }
 
