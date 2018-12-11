@@ -13,7 +13,10 @@ var spotifyApi;
 var client_id = "f4197e7c7e16424796aeddab09673434";
 var client_secret = "f7d26f4a74f44a439b571086aabf2934";
 
+<<<<<<< HEAD
 var searchTable = [];
+=======
+>>>>>>> 85b108317c4ad8d42c294477975f53c4f42ed835
 
 
 app.use(bodyParser.json());
