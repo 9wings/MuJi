@@ -2,7 +2,7 @@ $(document).ready( () => {
     var audio_context;
     var recorder;
     var audio_stream;
-
+ 
     // Prepare and check if requirements are filled
     Initialize();
 
@@ -10,12 +10,12 @@ $(document).ready( () => {
     document.getElementById("start-btn").addEventListener("click", function(){
         //console.log("Started recording");
         startRecording();
-        document.getElementById('detect').innerHTML = "detecting";
+        document.getElementById('detect').innerHTML = "DETECTING...";
     }, false);
-    
 
     // Handle on stop recording button
-    document.getElementById("stop-btn").addEventListener("click", function(){
+    document.getElementById("stop-btn").addEventListener("click", function() {
+
             var _AudioFormat = "audio/wav";
             stopRecording(function(AudioBLOB){
                 var url = URL.createObjectURL(AudioBLOB);

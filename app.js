@@ -13,6 +13,8 @@ var spotifyApi;
 var client_id = "f4197e7c7e16424796aeddab09673434";
 var client_secret = "f7d26f4a74f44a439b571086aabf2934";
 
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var final_emotion = "Love";
