@@ -38,7 +38,7 @@ $(document).ready( () => {
                             document.getElementById('detect').innerHTML = obj[0].emotion;
                             
                             //console.log(xhr.responseText);
-                          $.post("http://localhost:5000/catchEmotion", {"emotions": obj});
+                          $.post("http://muji.herokuapp.com/catchEmotion", JSON.stringify({'emotions': obj}));
                           document.getElementById("music_page").style="display:inline;";
                          }
                     }

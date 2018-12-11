@@ -17,7 +17,7 @@ var searchTable = {
   "angry": ["angry", "furious", "mad"],
   "disgust": ["yuck", "let", "go"],
   "fear": ["fear", "scary", "freight"],
-  "neutral": ["you", "normal", "regular"],
+  "neutral": "you"| "normal"| "regular",
   "sad": ["never", "break", "heart"],
   "pleasant suprise": ["surprise", "wow", "expect"],
   "happy": ["happy", "best", "love"]
@@ -64,32 +64,28 @@ app.get('/search', (req, res) => {
   spotifyApi.clientCredentialsGrant().then(
     (data) => {
       spotifyApi.setAccessToken(data.body['access_token']);
-      var searchKey;
-
+      var searchKey = searchTable["neutral"];
+/*
       if (searchTable[emotion] != undefined) {
         var index = Math.floor(Math.random() * 2);
         searchKey = searchTable[emotion][index];
       } else {
         searchKey = emotion;
       }
-
+*/
       spotifyApi.searchTracks(searchKey)
         .then(function(data) {
           var urlExists = false;
           var done = false;
           var counter = 0;
           var index = 0;
+
           while (!done) {
             if (data.body.tracks.items[index].preview_url == null){
               data.body.tracks.items.splice(index, 1);
-            } else {
-              index++;
-            }
+            } else {index++;}
             counter++;
-
-            if (counter == 20) {
-              done = true;
-            }
+            if (counter == 20) {done = true;}
           }
           
           res.send(data.body.tracks.items);
@@ -102,8 +98,16 @@ app.get('/search', (req, res) => {
 });
 
 app.post("/catchEmotion", (req, res) => {
-  emotion = req.body['emotions[0][emotion]'];
-  console.log(emotion);
+  data = req.body;
+  for (var key in data){
+    title = key.substring(12, )
+    console.log(title);
+    if(title == "emotion]"){
+      console.log(data[key]);
+    }
+
+  }
+
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

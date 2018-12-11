@@ -6,7 +6,7 @@ function initAudioPlayer() {
     var audio = new Audio();
 
     request = new XMLHttpRequest();
-    request.open("GET", "http://localhost:5000/search", true);
+    request.open("GET", "http://muji.herokuapp.com/search", true);
     request.send();
 
     request.onreadystatechange = function() {
