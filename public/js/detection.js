@@ -40,8 +40,13 @@ $(document).ready( () => {
                         if(xhr.readyState == 4 && xhr.status == 200) {
                             var obj = JSON.parse(xhr.responseText);
                             console.log(obj);
-                            document.getElementById('detect').innerHTML = obj[0].emotion;
                             document.getElementById('detect').style.fontSize = "35px";
+                            document.getElementById('detect').innerHTML = "<br/>";
+
+                            for (var i = 0; i < obj.length; i++) {
+                                document.getElementById('detect').innerHTML += obj[i].emotion + "<br/>";
+                            }
+                            
                             
                             //console.log(xhr.responseText);
                             $.post("http://localhost:5000/catchEmotion", {"emotions": obj});
