@@ -14,9 +14,6 @@ function initAudioPlayer() {
             list_data = JSON.parse(request.responseText);
             console.log(list_data)
 
-
-
-
             data = list_data[0]
             song_name = data.name;
             artist_name = data.artists[0].name; //there are multiple artists but we only care about the name of one artist
