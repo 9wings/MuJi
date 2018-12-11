@@ -25,14 +25,6 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.get('/',
 (req, res) => {
-
-  credentials = {
-    clientId: client_id,
-    clientSecret: client_secret,
-    redirectUri: 'http://localhost.com:5000/'
-    };
-  
-  spotifyApi = new spotifyWebAPI(credentials);
   res.sendFile('public/views/homepage.html', { root: __dirname });
 });
 
@@ -52,14 +44,20 @@ app.get("/music",
 });
 
 app.get('/search', (req, res) => {
+  credentials = {
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUri: 'http://localhost.com:5000/'
+    };
+  
+  spotifyApi = new spotifyWebAPI(credentials);
   spotifyApi.clientCredentialsGrant().then(
     (data) => {
-      console.log(data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
 
-      spotifyApi.searchTracks('Love')
+      spotifyApi.searchTracks('Cool')
         .then(function(data) {
-          res.send(data.body.tracks.items[0]);
+          res.send(data.body.tracks.items);
         }, function(err) {
           console.error(err);
         });
@@ -71,18 +69,7 @@ app.post("/catchEmotion", (req, res) => {
   emotion = req.body;
   console.log(emotion);
   var emotion = req.body;
-
-  var to_insert = {
-    "emotion": req.body.segments.emotion
-  }
-  console.log(to_insert.emotion);
-
-  // res.set('Content-type', 'application/json');
-  /*
-  the emotion is an array; extract information from it and
-  use some kind of algorithm to set the variable "final_emotion" to the emotion => joy, surprise, disgust, sadness, anger
-
-  */
+  
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

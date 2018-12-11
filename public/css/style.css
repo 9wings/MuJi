@@ -1,8 +1,7 @@
 .navbar-nav{
 	float: none;
 	text-align: center;
-}  
-
+} 
 .nav-link, .navbar-brand{ 
 	color: #000000; 
 	cursor: pointer;
@@ -144,10 +143,5 @@ body {
    	/*css hack for ie*/     
    	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
    	-ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
-}
-
-.container {
-	size: 30px;
-	color: 	#F0F8FF;
 }
 
