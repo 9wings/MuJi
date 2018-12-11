@@ -156,3 +156,14 @@ body {
    	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
    	-ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
 }
+@media screen and (min-width: 1200px){
+	.wrapper{
+	display:grid;
+	grid-template-columns: 5fr 2fr;
+	}
+}
+@media screen and (max-width: 1200px){
+	.wrapper{
+		display: grid;
+	}
+}
