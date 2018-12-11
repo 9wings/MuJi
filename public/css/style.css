@@ -27,14 +27,6 @@
 	padding-right: 20px;*/
 }
 
-
-/*.nav.navbar-nav p{
-    color: white;
-    padding-top: 15px;
-	padding-left: 100px;
-	padding-right: 250px;
-}*/
-
 .header{
 	background-image: 'backgroundImage.jpg';
 	background-attachment: fixed;
@@ -57,14 +49,9 @@ hr {
 
 
 body {
-<<<<<<< HEAD
-	color:white;
-	height:100%;
-   	width:100%;
-=======
+
 	height: 100%;
    	width: 100%;
->>>>>>> c6c62de8ef41a88077fee1ef24ec14596009c97f
    	background-image: url(/static/images/background.jpg);/*your background image*/  
    	background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
    	background-size: cover;/*this sets the image to fullscreen covering the whole screen*/  

@@ -76,15 +76,6 @@ app.get('/search', (req, res) => {
       spotifyApi.searchTracks(searchKey)
         .then(function(data) {
           var urlExists = false;
-
-          // data.body.tracks.items.forEach(element => {
-          //   if (element.preview_url == null){
-          //      data.body.tracks.items.splice(i, 1);
-          //   } else {
-          //      i++;
-          //   }
-          // });;
-
           var done = false;
           var counter = 0;
           var index = 0;
