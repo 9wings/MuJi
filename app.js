@@ -25,14 +25,6 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.get('/',
 (req, res) => {
-
-  credentials = {
-    clientId: client_id,
-    clientSecret: client_secret,
-    redirectUri: 'http://localhost.com:5000/'
-    };
-  
-  spotifyApi = new spotifyWebAPI(credentials);
   res.sendFile('public/views/homepage.html', { root: __dirname });
 });
 
@@ -52,22 +44,26 @@ app.get("/music",
 });
 
 app.get('/search', (req, res) => {
+  credentials = {
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUri: 'http://localhost.com:5000/'
+    };
+  
+  spotifyApi = new spotifyWebAPI(credentials);
   spotifyApi.clientCredentialsGrant().then(
     (data) => {
-      console.log(data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
 
-      spotifyApi.searchTracks('Love')
+      spotifyApi.searchTracks('Cool')
         .then(function(data) {
-          res.send(data.body.tracks.items[0]);
+          res.send(data.body.tracks.items);
         }, function(err) {
           console.error(err);
         });
     },
     (err) => {console.log('Something went wrong when retrieving an access token', err.message); });
 });
-
-
 
 app.post("/catchEmotion", (req, res) => {
   emotion = req.body;

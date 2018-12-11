@@ -7,32 +7,34 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <title>Muji</title>
+
+
 </head>
 
 <body background = "/static/images/Backgroundemotion.png">
-    <div class="container-fluid">
-        <nav class="navbar">
-            <div class="container">
-                <div id="navbar" class="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><p>muji.com</p></li>
-                        <li class="active"><a href="/">Home</a></li>
-                        <li class="active"><a href="about">About</a></li>
-                        <li class="active"><a href="/detection">Audio Detection</a></li>
-                        <li class="active"><a href="/music">Music List</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+
+
+<div id = "body_container" >
+
+    <div id="music" >
+        <h3 id="song_name"></h3>
+        <p id="artist_name"></p>
+        <img id="img_url"/>
+        <div id="buttons" style="display:inline;">
+            <button id="playB">Play</button>
+            <button id="pauseB">Pause</button>
+            <button>Add to Playlist</button>
+        </div>
     </div>
 
-	<div class="music">
-		<p>Now playing:</p>
-        <p id="name"></p>
-		<button id="playB">Play</button>
-		<button id="pauseB">Pause</button>
-		<button>Add to Playlist</button>
+
+    <div id="list_songs" >
+        <h2> Gede </h2>
     </div>
+
+</div>
+
+
 
     <script src="/static/js/music.js"></script>
 </body>
