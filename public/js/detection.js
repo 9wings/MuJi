@@ -11,6 +11,7 @@ $(document).ready( () => {
         //console.log("Started recording");
         startRecording();
         document.getElementById('detect').innerHTML = "DETECTING...";
+        document.getElementById('detect').style.marginTop = "30px"; 
     }, false);
 
     // Handle on stop recording button
@@ -40,7 +41,6 @@ $(document).ready( () => {
                             var obj = JSON.parse(xhr.responseText);
                             console.log(obj);
                             document.getElementById('detect').innerHTML = obj[0].emotion;
-                            document.getElementById('detect').style.marginTop = "75px";
                             document.getElementById('detect').style.fontSize = "35px";
                             
                             //console.log(xhr.responseText);
