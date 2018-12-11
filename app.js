@@ -13,9 +13,12 @@ var spotifyApi;
 var client_id = "f4197e7c7e16424796aeddab09673434";
 var client_secret = "f7d26f4a74f44a439b571086aabf2934";
 
+var searchTable = [];
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-var final_emotion = "Love";
+var emotion;
 
 const PORT = process.env.PORT || 5000
 
@@ -55,21 +58,20 @@ app.get('/search', (req, res) => {
     (data) => {
       spotifyApi.setAccessToken(data.body['access_token']);
 
-      spotifyApi.searchTracks('Cool')
+      spotifyApi.searchTracks(emotion)
         .then(function(data) {
           res.send(data.body.tracks.items);
         }, function(err) {
           console.error(err);
         });
+
     },
     (err) => {console.log('Something went wrong when retrieving an access token', err.message); });
 });
 
 app.post("/catchEmotion", (req, res) => {
-  emotion = req.body;
+  emotion = req.body['emotions[0][emotion]'];
   console.log(emotion);
-  var emotion = req.body;
-  
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
