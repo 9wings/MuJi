@@ -103,14 +103,6 @@
 	background-position: center;
 }
   
-body {
-	font-family: "HelveticaNeue-Light";
-	background-color: #2A2A2B; 
-	color: #BBA9C0;
-	font-size: 18px;
-	text-align: center;
-} 
-
 h2 {
 	font-size: 30px;
 }
@@ -119,22 +111,14 @@ hr {
 	width: 70%;
 }
 
-div {
-	padding-bottom: 20px;
-	margin: 10px;
-	margin-left: 220px;
-	margin-right: 220px;
-}
 
 .about_us {
 	color: #EAE6E6;
 }
 
-div {
-	text-align: center;
-}
 
 body {
+	color:white;
 	height:100%;
    	width:100%;
    	background-image: url(/static/images/background.jpg);/*your background image*/  

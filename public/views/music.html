@@ -8,28 +8,53 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <title>Muji</title>
 
+    <style>
+        .wrapper{
+            display:grid;
+            grid-template-columns: 5fr 2fr;
+        }
+        #music{
+            display: block;
+            margin-left:auto;
+            margin-right:auto;
+            overflow: hidden;
+        }
+        #buttons{
+            display: block;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        #list_songs{
+            margin-top: 10%;
+            height: 704px;
+            display: grid;
+            overflow:auto;
+        }
+
+        .hovering { background-color: #380606; }
+    </style>
 
 </head>
 
-<body background = "/static/images/Backgroundemotion.png">
+<body>
 
 
-<div id = "body_container" >
 
-    <div id="music" >
+<div class = "wrapper" >
+    <div id="music">
         <h3 id="song_name"></h3>
         <p id="artist_name"></p>
         <img id="img_url"/>
-        <div id="buttons" style="display:inline;">
-            <button id="playB">Play</button>
-            <button id="pauseB">Pause</button>
+
+        <div id="buttons" align="center">
+            <button id="playB" class = ".btn-info">Play</button>
+            <button id="pauseB" class = ".btn-danger">Pause</button>
             <button>Add to Playlist</button>
         </div>
     </div>
 
-
     <div id="list_songs" >
-        <h2> Gede </h2>
+
     </div>
 
 </div>
