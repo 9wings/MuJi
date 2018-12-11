@@ -17,6 +17,10 @@ $(document).ready( () => {
     document.getElementById("stop-btn").addEventListener("click", function() {
 
             var _AudioFormat = "audio/wav";
+
+            document.getElementById('start-btn').style.visibility = "hidden";
+            document.getElementById('stop-btn').style.visibility = "hidden";
+
             stopRecording(function(AudioBLOB){
                 var url = URL.createObjectURL(AudioBLOB);
                 var reader = new FileReader();
@@ -36,10 +40,13 @@ $(document).ready( () => {
                             var obj = JSON.parse(xhr.responseText);
                             console.log(obj);
                             document.getElementById('detect').innerHTML = obj[0].emotion;
+                            document.getElementById('detect').style.marginTop = "75px";
+                            document.getElementById('detect').style.fontSize = "35px";
                             
                             //console.log(xhr.responseText);
-                          $.post("http://localhost:5000/catchEmotion", {"emotions": obj});
-                          document.getElementById("music_page").style="display:inline;";
+                            $.post("http://localhost:5000/catchEmotion", {"emotions": obj});
+                            document.getElementById("music_page").style="display:inline;";
+                            document.getElementById("music_page").style.marginTop = "75px";
                          }
                     }
                    xhr.send(JSON.stringify(obj));
