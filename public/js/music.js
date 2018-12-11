@@ -3,14 +3,13 @@ var audio, playButton, pauseButton;
 initAudioPlayer();
 
 function initAudioPlayer() {
-    
+    var audio = new Audio();
 
     request = new XMLHttpRequest();
     request.open("GET", "http://localhost:5000/search", true);
     request.send();
 
     request.onreadystatechange = function() {
-        var audio = new Audio();
         if (request.readyState == 4 && request.status == 200) {
             list_data = JSON.parse(request.responseText);
             list_songs = document.getElementById("list_songs")
