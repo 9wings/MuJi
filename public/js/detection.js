@@ -8,8 +8,9 @@ $(document).ready( () => {
 
     // Handle on start recording button
     document.getElementById("start-btn").addEventListener("click", function(){
-        console.log("Started recording");
+        //console.log("Started recording");
         startRecording();
+        document.getElementById('detect').innerHTML = "detecting";
     }, false);
     
 
